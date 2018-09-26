@@ -20,16 +20,15 @@ func say(s string) {
 	}
 }
 
-func readRebateList() (rebateList map[int]float32) {
-	rebateList = make(map[int]float32)
-	rebateList[1] = 0.06 //体验
-	rebateList[2] = 0.07 //会员
-	rebateList[3] = 0.08 //V1
-	rebateList[4] = 0.09 //V2
-	rebateList[5] = 0.1  //V3
-	rebateList[6] = 0.1  //合伙人
-	rebateList[7] = 0.1  //股东
-	rebateList[8] = 0.1  //董事
+func readRebateList() (rebateArray []float32) {
+	rebateArray[1] = 0.06 //体验
+	rebateArray[2] = 0.07 //会员
+	rebateArray[3] = 0.08 //V1
+	rebateArray[4] = 0.09 //V2
+	rebateArray[5] = 0.1  //V3
+	rebateArray[6] = 0.1  //合伙人
+	rebateArray[7] = 0.1  //股东
+	rebateArray[8] = 0.1  //董事 */
 	return
 }
 
@@ -81,21 +80,12 @@ func main() {
 
 	users := []userInfo{{1, "V1用户", 1, 0.0}, {2, "V2用户", 2, 0.0}}
 
-	rebateArray := [...]float32{1: 0.06, 2: 0.07, 3: 0.08, 4: 0.09, 5: 0.10, 6: 0.10, 7: 0.10, 8: 0.10}
-
+	rebateArray := readRebateList()
+	//设置用户等级对应的返利比例
 	for i := range users {
 		users[i].rebate = rebateArray[users[i].level]
 	}
 	fmt.Printf("\n%v", users)
-	/* 	var rebateList map[int]float32
-	   	rebateList[1] = 0.06f //体验
-	   	rebateList[2] = 0.07 //会员
-	   	rebateList[3] = 0.08 //V1
-	   	rebateList[4] = 0.09 //V2
-	   	rebateList[5] = 0.1  //V3
-	   	rebateList[6] = 0.1  //合伙人
-	   	rebateList[7] = 0.1  //股东
-	   	rebateList[8] = 0.1  //董事 */
 
 	var usersLevel []int
 	for i := range users {
@@ -105,10 +95,6 @@ func main() {
 	var result []int
 	result = cutOff(usersLevel)
 	fmt.Printf("%v", result)
-
-	var rebateList map[int]float32
-	rebateList = readRebateList()
-	fmt.Printf("%v", rebateList)
 
 	/* 	r := gin.Default()
 	   	r.GET("/ping", func(c *gin.Context) {
