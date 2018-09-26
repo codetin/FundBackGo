@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math"
-	"time"
 )
 
 type userInfo struct {
@@ -11,14 +10,6 @@ type userInfo struct {
 	name   string
 	level  int
 	rebate float64
-}
-
-func say(s string) {
-	for i := 0; i < 5; i++ {
-		time.Sleep(100 * time.Millisecond)
-		fmt.Println(s, i)
-
-	}
 }
 
 func round(f float64, n int) float64 {
@@ -110,19 +101,6 @@ func userRebate(s []userInfo) (cutOffArray []userInfo) {
 }
 
 func main() {
-	/* 	go say("world")
-	   	go say("hello test")
-	   	time.Sleep(500 * time.Millisecond)
-	   	//time.Until(time.Now())
-	   	println("main")
-	   	fmt.Printf("%s", "test")
-	   	//say("ok") */
-
-	//array := []int{1, 2, 3, 2, 1, 3}
-
-	/* 	array := []int{1, 1, 1, 2, 2, 2, 3, 1, 2, 3, 3}
-	   	fmt.Printf("%v\n", array)
-	   	cutOff(array) */
 
 	users := []userInfo{{1, "V1用户", 1, 0.0}, {2, "V2用户", 2, 0.0}, {3, "V2用户", 2, 0.0}, {4, "V2用户", 2, 0.0}, {5, "V3用户", 3, 0.0}, {6, "V3用户", 3, 0.0}, {7, "V1用户", 1, 0.0}, {8, "V4用户", 4, 0.0}, {9, "V5用户", 5, 0.0}}
 	//读取最新的返利配置
@@ -133,18 +111,9 @@ func main() {
 		users[i].rebate = rebateArray[users[i].level]
 	}
 
-
 	var result []userInfo
 	result = userRebate(users)
 	fmt.Printf("\n%v", users)
 	fmt.Printf("\n%v", result)
-
-	/* 	r := gin.Default()
-	   	r.GET("/ping", func(c *gin.Context) {
-	   		c.JSON(200, gin.H{
-	   			"message": "pong",
-	   		})
-	   	})
-	   	r.Run() // listen and serve on 0.0.0.0:8080 */
 
 }
