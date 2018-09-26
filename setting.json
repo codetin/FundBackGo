@@ -1,0 +1,9 @@
+{
+    "go.toolsGopath": "C:\\Users\\LXY\\go",
+    "go.autocompleteUnimportedPackages": true,
+    "go.inferGopath": true,
+    "go.formatTool": "gofmt",
+    "go.vetFlags": [
+        "/src"
+    ]
+}
