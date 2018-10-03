@@ -6,18 +6,19 @@ import (
 )
 
 type userInfo struct {
-	uid    int64
-	name   string
-	level  int
-	rebate float64
+	uid    int64   //用户ID
+	name   string  //用户名字
+	level  int     //用户级别
+	rebate float64 //返点数量
 }
 
+//将float转换为demical精度。解决精度丢失问题
 func round(f float64, n int) float64 {
 	n10 := math.Pow10(n)
 	return math.Trunc((f+0.5/n10)*n10) / n10
 }
 
-var rebateArray []float64 = make([]float64, 20)
+var rebateArray = make([]float64, 20)
 
 func readRebateList(rebateArray []float64) {
 	rebateArray[1] = 0.06 //体验
@@ -27,7 +28,7 @@ func readRebateList(rebateArray []float64) {
 	rebateArray[5] = 0.1  //V3
 	rebateArray[6] = 0.1  //合伙人
 	rebateArray[7] = 0.1  //股东
-	rebateArray[8] = 0.1  //董事 */
+	rebateArray[8] = 0.1  //董事
 	return
 }
 
